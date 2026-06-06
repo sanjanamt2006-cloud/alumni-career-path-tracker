@@ -501,7 +501,6 @@ elif page == "Career Predictor":
 # --------------------------------
 # AI CAREER ADVISOR
 # --------------------------------
-
 elif page == "AI Career Advisor":
 
     st.header("🚀 AI Career Advisor")
@@ -520,19 +519,21 @@ elif page == "AI Career Advisor":
         60
     )
 
-    if cgpa < 8:
-        st.info(
-            "Improve CGPA for better placement opportunities."
-        )
+    if st.button("🎯 Get Career Advice"):
 
-    if coding < 70:
-        st.info(
-            "Practice DSA and build more projects."
-        )
+        if cgpa < 8:
+            st.info(
+                "📚 Improve CGPA for better placement opportunities."
+            )
 
-    st.success(
-        "Recommended: Internship + Certification + Hackathons"
-    )
+        if coding < 70:
+            st.info(
+                "💻 Practice DSA and build more projects."
+            )
+
+        st.success(
+            "🏆 Recommended: Internship + Certification + Hackathons"
+        )
     st.markdown("---")
 
 st.markdown(
