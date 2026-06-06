@@ -118,8 +118,8 @@ AI-Powered Alumni Intelligence Platform
 
 </div>
 """, unsafe_allow_html=True)
-        st.markdown("### 🌟 Platform Features")
 
+    st.markdown("### 🌟 Platform Features")
     col1, col2, col3 = st.columns(3)
 
     with col1:
