@@ -120,6 +120,9 @@ AI-Powered Alumni Intelligence Platform
 
 </div>
 """, unsafe_allow_html=True)
+    st.success(
+    "🎯 CareerFlow AI helps institutions analyze alumni career trends, employability skills, placement outcomes, and career growth opportunities."
+)
 
     st.markdown("### 🌟 Platform Features")
     hero1, hero2, hero3 = st.columns(3)
