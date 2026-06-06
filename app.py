@@ -121,7 +121,13 @@ AI-Powered Alumni Intelligence Platform
 """, unsafe_allow_html=True)
 
     st.markdown("### 🌟 Platform Features")
-    col1, col2, col3 = st.columns(3)
+    c1, c2, c3 = st.columns(3)
+
+c1.success("📈 1000+ Alumni Records")
+
+c2.info("🏢 200+ Companies")
+
+c3.warning("💰 25 LPA Highest Package")
 
     with col1:
         st.info("""
