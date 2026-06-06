@@ -96,6 +96,28 @@ if page == "Dashboard":
     st.title(
         "🎓 Alumni Career Path Tracker"
     )
+    st.markdown("""
+<div style="
+padding:20px;
+border-radius:15px;
+background-color:#1E3A8A;
+color:white;
+text-align:center;
+">
+
+<h2>🚀 Welcome to CareerFlow AI</h2>
+
+<p>
+AI-Powered Alumni Intelligence Platform
+</p>
+
+<p>
+📊 Placement Analytics | 🤖 Career Prediction |
+🚀 AI Career Advisor | 🏆 Leaderboard
+</p>
+
+</div>
+""", unsafe_allow_html=True)
 
     st.markdown(
         """
