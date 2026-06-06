@@ -55,8 +55,10 @@ def ask_claude(prompt):
     data = {"contents": [{"parts": [{"text": prompt}]}]}
     response = requests.post(url, headers=headers, json=data)
     result = response.json()
-    return result["candidates"][0]["content"]["parts"][0]["text"]
-
+    if "candidates" in result:
+        return result["candidates"][0]["content"]["parts"][0]["text"]
+    else:
+        return f"API Error: {result}"
 # --------------------------------
 # SIDEBAR
 # --------------------------------
