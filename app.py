@@ -511,25 +511,25 @@ elif page == "Career Predictor":
     ) / 4
 
     st.metric(
-        "Employability Score",
-        round(score, 2)
+    "Employability Score",
+    round(score, 2)
+)
+
+if score > 75:
+    st.balloons()
+    st.success(
+        "🎉 High Placement Probability"
     )
 
-    if score > 75:
-        st.balloons()
-        st.success(
-            "🎉 High Placement Probability"
-        )
+elif score > 60:
+    st.warning(
+        "Moderate Placement Probability"
+    )
 
-    elif score > 60:
-        st.warning(
-            "Moderate Placement Probability"
-        )
-
-    else:
-        st.error(
-            "Low Placement Probability"
-        )
+else:
+    st.error(
+        "Low Placement Probability"
+    )
 # --------------------------------
 # AI CAREER ADVISOR
 # --------------------------------
