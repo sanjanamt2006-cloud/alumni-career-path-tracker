@@ -33,7 +33,6 @@ df["careerflow_score"] = (
 # HELPERS
 # --------------------------------
 def get_placement_rate(df):
-
     return round(
         (
             df["placement_status"]
@@ -44,14 +43,12 @@ def get_placement_rate(df):
     )
 
 def get_avg_salary(df):
-
     return round(
         df["salary_package_lpa"].mean(),
         2
     )
 
 def get_top_branch(df):
-
     return (
         df["branch"]
         .value_counts()
@@ -59,7 +56,6 @@ def get_top_branch(df):
     )
 
 def get_top_tier(df):
-
     return (
         df["college_tier"]
         .value_counts()
@@ -70,15 +66,9 @@ def get_top_tier(df):
 # SIDEBAR
 # --------------------------------
 
-st.sidebar.title(
-    "🎓 Alumni Career Path Tracker"
-)
-st.caption(
-    "Empowering Students with Data-Driven Career Intelligence 🚀"
-)
-st.sidebar.success(
-    "🚀 Welcome to CareerFlow AI"
-)
+st.sidebar.title("🎓 Alumni Career Path Tracker")
+st.caption("Empowering Students with Data-Driven Career Intelligence 🚀")
+st.sidebar.success("🚀 Welcome to CareerFlow AI")
 st.sidebar.markdown("---")
 
 st.sidebar.info(
@@ -100,7 +90,7 @@ page = st.sidebar.radio(
         "Career Predictor",
         "AI Career Advisor",
         "Leaderboard",
-         "Placement Insights",
+        "Placement Insights",
         "Dataset Explorer"
     ]
 )
@@ -111,9 +101,7 @@ page = st.sidebar.radio(
 
 if page == "Dashboard":
 
-    st.title(
-        "🎓 Alumni Career Path Tracker"
-    )
+    st.title("🎓 Alumni Career Path Tracker")
     st.markdown("""
 <div style="
 padding:20px;
@@ -136,9 +124,10 @@ AI-Powered Alumni Intelligence Platform
 
 </div>
 """, unsafe_allow_html=True)
+
     st.success(
-    "🎯 CareerFlow AI helps institutions analyze alumni career trends, employability skills, placement outcomes, and career growth opportunities."
-)
+        "🎯 CareerFlow AI helps institutions analyze alumni career trends, employability skills, placement outcomes, and career growth opportunities."
+    )
 
     st.markdown("### 🌟 Platform Features")
     hero1, hero2, hero3 = st.columns(3)
@@ -172,22 +161,22 @@ AI-Powered Alumni Intelligence Platform
         Rank students using
         CareerFlow Score.
         """)
-        
-        st.markdown("""
-        ### 🎯 What This Platform Does
 
-        ✔ Tracks Placement Trends
+    st.markdown("""
+    ### 🎯 What This Platform Does
 
-        ✔ Predicts Employability Score
+    ✔ Tracks Placement Trends
 
-       ✔ Provides AI Career Guidance
+    ✔ Predicts Employability Score
 
-       ✔ Identifies Skill Gaps
+    ✔ Provides AI Career Guidance
 
-       ✔ Highlights Top Talent
+    ✔ Identifies Skill Gaps
 
-       ✔ Generates Career Insights
-       """)
+    ✔ Highlights Top Talent
+
+    ✔ Generates Career Insights
+    """)
 
     st.markdown(
         """
@@ -197,27 +186,14 @@ AI-Powered Alumni Intelligence Platform
         Career Prediction & Employability Insights Platform
         """
     )
-    c1,c2,c3,c4 = st.columns(4)
 
-    c1.metric(
-        "Placement Rate %",
-        get_placement_rate(df)
-    )
+    c1, c2, c3, c4 = st.columns(4)
 
-    c2.metric(
-        "Average Salary",
-        f"{get_avg_salary(df)} LPA"
-    )
+    c1.metric("Placement Rate %", get_placement_rate(df))
+    c2.metric("Average Salary", f"{get_avg_salary(df)} LPA")
+    c3.metric("Top Branch", get_top_branch(df))
+    c4.metric("Top Tier", get_top_tier(df))
 
-    c3.metric(
-        "Top Branch",
-        get_top_branch(df)
-    )
-
-    c4.metric(
-        "Top Tier",
-        get_top_tier(df)
-    )
     st.subheader("📈 Placement Overview")
 
     fig = px.histogram(
@@ -226,41 +202,19 @@ AI-Powered Alumni Intelligence Platform
         color="placement_status",
         title="Placement Distribution"
     )
-
-    st.plotly_chart(
-        fig,
-        use_container_width=True
-    )
+    st.plotly_chart(fig, use_container_width=True)
 
     st.markdown("---")
 
     left, right = st.columns(2)
 
     with left:
-
-        fig = px.histogram(
-            df,
-            x="branch",
-            title="Students by Branch"
-        )
-
-        st.plotly_chart(
-            fig,
-            use_container_width=True
-        )
+        fig = px.histogram(df, x="branch", title="Students by Branch")
+        st.plotly_chart(fig, use_container_width=True)
 
     with right:
-
-        fig = px.pie(
-            df,
-            names="college_tier",
-            title="College Tier Distribution"
-        )
-
-        st.plotly_chart(
-            fig,
-            use_container_width=True
-        )
+        fig = px.pie(df, names="college_tier", title="College Tier Distribution")
+        st.plotly_chart(fig, use_container_width=True)
 
 # --------------------------------
 # PLACEMENT ANALYTICS
@@ -268,9 +222,7 @@ AI-Powered Alumni Intelligence Platform
 
 elif page == "Placement Analytics":
 
-    st.header(
-        "📊 Placement Analytics"
-    )
+    st.header("📊 Placement Analytics")
 
     fig = px.scatter(
         df,
@@ -279,23 +231,10 @@ elif page == "Placement Analytics":
         color="placement_status",
         title="CGPA vs Coding Skill"
     )
+    st.plotly_chart(fig, use_container_width=True)
 
-    st.plotly_chart(
-        fig,
-        use_container_width=True
-    )
-
-    fig = px.box(
-        df,
-        x="branch",
-        y="cgpa",
-        title="Branch vs CGPA"
-    )
-
-    st.plotly_chart(
-        fig,
-        use_container_width=True
-    )
+    fig = px.box(df, x="branch", y="cgpa", title="Branch vs CGPA")
+    st.plotly_chart(fig, use_container_width=True)
 
 # --------------------------------
 # SALARY ANALYTICS
@@ -303,9 +242,7 @@ elif page == "Placement Analytics":
 
 elif page == "Salary Analytics":
 
-    st.header(
-        "💰 Salary Analytics"
-    )
+    st.header("💰 Salary Analytics")
 
     fig = px.histogram(
         df,
@@ -313,15 +250,10 @@ elif page == "Salary Analytics":
         nbins=30,
         title="Salary Distribution"
     )
-
-    st.plotly_chart(
-        fig,
-        use_container_width=True
-    )
+    st.plotly_chart(fig, use_container_width=True)
 
     salary_branch = (
-        df.groupby("branch")
-        ["salary_package_lpa"]
+        df.groupby("branch")["salary_package_lpa"]
         .mean()
         .reset_index()
     )
@@ -332,11 +264,7 @@ elif page == "Salary Analytics":
         y="salary_package_lpa",
         title="Average Salary by Branch"
     )
-
-    st.plotly_chart(
-        fig,
-        use_container_width=True
-    )
+    st.plotly_chart(fig, use_container_width=True)
 
 # --------------------------------
 # SKILL INTELLIGENCE
@@ -344,9 +272,7 @@ elif page == "Salary Analytics":
 
 elif page == "Skill Intelligence":
 
-    st.header(
-        "🚀 Skill Intelligence"
-    )
+    st.header("🚀 Skill Intelligence")
 
     skills = {
         "Coding": df["coding_skill_score"].mean(),
@@ -357,7 +283,6 @@ elif page == "Skill Intelligence":
     }
 
     fig = go.Figure()
-
     fig.add_trace(
         go.Scatterpolar(
             r=list(skills.values()),
@@ -365,108 +290,9 @@ elif page == "Skill Intelligence":
             fill="toself"
         )
     )
+    fig.update_layout(title="🚀 Skill Radar Analysis")
+    st.plotly_chart(fig, use_container_width=True)
 
-    fig.update_layout(
-        title="🚀 Skill Radar Analysis"
-    )
-
-    st.plotly_chart(
-        fig,
-        use_container_width=True
-    )
-
-# --------------------------------
-# DATASET EXPLORER
-# --------------------------------
-# --------------------------------
-# PLACEMENT INSIGHTS
-# --------------------------------
-
-elif page == "Placement Insights":
-
-    st.header("📈 Placement Insights")
-
-    placed_df = df[
-        df["placement_status"] == "Placed"
-    ]
-
-    branch_salary = (
-        placed_df.groupby("branch")
-        ["salary_package_lpa"]
-        .mean()
-        .reset_index()
-    )
-
-    fig = px.bar(
-        branch_salary,
-        x="branch",
-        y="salary_package_lpa",
-        title="Average Salary by Branch"
-    )
-
-    st.plotly_chart(
-        fig,
-        use_container_width=True
-    )
-elif page == "Dataset Explorer":
-
-    st.header(
-        "📁 Dataset Explorer"
-    )
-
-    st.dataframe(df)
-
-    st.write(
-        "Rows:",
-        df.shape[0]
-    )
-
-    st.write(
-        "Columns:",
-        df.shape[1]
-    )
-
-    st.write(
-        "Columns Available"
-    )
-
-    st.write(
-        df.columns.tolist()
-    )
-# --------------------------------
-# LEADERBOARD
-# --------------------------------
-
-elif page == "Leaderboard":
-
-    st.header("🥇 Top Talent Leaderboard")
-
-    st.success(
-        "Students ranked using CareerFlow AI Score"
-    )
-    top_students = (
-        df.sort_values(
-            "careerflow_score",
-            ascending=False
-        )
-        .head(10)
-    )
-
-    st.dataframe(
-        top_students[
-            [
-                "student_id",
-                "branch",
-                "careerflow_score",
-                "salary_package_lpa"
-            ]
-        ]
-    )
-    st.balloons()
-
-    st.info(
-        "Top 10 students based on CareerFlow AI Score"
-    )
 # --------------------------------
 # CAREER PREDICTOR
 # --------------------------------
@@ -475,33 +301,10 @@ elif page == "Career Predictor":
 
     st.header("🤖 Career Predictor")
 
-    cgpa = st.slider(
-        "CGPA",
-        0.0,
-        10.0,
-        7.0
-    )
-
-    coding = st.slider(
-        "Coding Skill",
-        0,
-        100,
-        50
-    )
-
-    aptitude = st.slider(
-        "Aptitude",
-        0,
-        100,
-        50
-    )
-
-    communication = st.slider(
-        "Communication",
-        0,
-        100,
-        50
-    )
+    cgpa = st.slider("CGPA", 0.0, 10.0, 7.0)
+    coding = st.slider("Coding Skill", 0, 100, 50)
+    aptitude = st.slider("Aptitude", 0, 100, 50)
+    communication = st.slider("Communication", 0, 100, 50)
 
     score = (
         cgpa * 10 +
@@ -510,26 +313,16 @@ elif page == "Career Predictor":
         communication
     ) / 4
 
-    st.metric(
-    "Employability Score",
-    round(score, 2)
-)
+    st.metric("Employability Score", round(score, 2))
 
-if score > 75:
-    st.balloons()
-    st.success(
-        "🎉 High Placement Probability"
-    )
+    if score > 75:
+        st.balloons()
+        st.success("🎉 High Placement Probability")
+    elif score > 60:
+        st.warning("Moderate Placement Probability")
+    else:
+        st.error("Low Placement Probability")
 
-elif score > 60:
-    st.warning(
-        "Moderate Placement Probability"
-    )
-
-else:
-    st.error(
-        "Low Placement Probability"
-    )
 # --------------------------------
 # AI CAREER ADVISOR
 # --------------------------------
@@ -538,35 +331,18 @@ elif page == "AI Career Advisor":
 
     st.header("🚀 AI Career Advisor")
 
-    cgpa = st.number_input(
-        "CGPA",
-        0.0,
-        10.0,
-        7.0
-    )
-
-    coding = st.number_input(
-        "Coding Score",
-        0,
-        100,
-        60
-    )
+    cgpa = st.number_input("CGPA", 0.0, 10.0, 7.0)
+    coding = st.number_input("Coding Score", 0, 100, 60)
 
     if st.button("🎯 Get Career Advice"):
 
         if cgpa < 8:
-            st.info(
-                "📚 Improve CGPA for better placement opportunities."
-            )
+            st.info("📚 Improve CGPA for better placement opportunities.")
 
         if coding < 70:
-            st.info(
-                "💻 Practice DSA and build more projects."
-            )
+            st.info("💻 Practice DSA and build more projects.")
 
-        st.success(
-            "🏆 Recommended Path"
-        )
+        st.success("🏆 Recommended Path")
 
         st.markdown("""
 1️⃣ Complete Industry Internship
@@ -581,3 +357,63 @@ elif page == "AI Career Advisor":
 """)
 
     st.markdown("---")
+
+# --------------------------------
+# LEADERBOARD
+# --------------------------------
+
+elif page == "Leaderboard":
+
+    st.header("🥇 Top Talent Leaderboard")
+    st.success("Students ranked using CareerFlow AI Score")
+
+    top_students = (
+        df.sort_values("careerflow_score", ascending=False)
+        .head(10)
+    )
+
+    st.dataframe(
+        top_students[
+            ["student_id", "branch", "careerflow_score", "salary_package_lpa"]
+        ]
+    )
+    st.balloons()
+    st.info("Top 10 students based on CareerFlow AI Score")
+
+# --------------------------------
+# PLACEMENT INSIGHTS
+# --------------------------------
+
+elif page == "Placement Insights":
+
+    st.header("📈 Placement Insights")
+
+    placed_df = df[df["placement_status"] == "Placed"]
+
+    branch_salary = (
+        placed_df.groupby("branch")["salary_package_lpa"]
+        .mean()
+        .reset_index()
+    )
+
+    fig = px.bar(
+        branch_salary,
+        x="branch",
+        y="salary_package_lpa",
+        title="Average Salary by Branch"
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+# --------------------------------
+# DATASET EXPLORER
+# --------------------------------
+
+elif page == "Dataset Explorer":
+
+    st.header("📁 Dataset Explorer")
+
+    st.dataframe(df)
+    st.write("Rows:", df.shape[0])
+    st.write("Columns:", df.shape[1])
+    st.write("Columns Available")
+    st.write(df.columns.tolist())
