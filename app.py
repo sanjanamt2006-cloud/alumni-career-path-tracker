@@ -50,7 +50,7 @@ def get_top_tier(df):
 # --------------------------------
 def ask_claude(prompt):
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-    model = genai.GenerativeModel("gemini-pro")
+    model = genai.GenerativeModel("models/gemini-1.0-pro")
     response = model.generate_content(prompt)
     return response.text
 
