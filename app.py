@@ -19,12 +19,10 @@ st.set_page_config(
 # --------------------------------
 
 df = load_data()
-st.write(df["placement_status"].unique())
 
 # --------------------------------
 # HELPERS
 # --------------------------------
-
 def get_placement_rate(df):
 
     return round(
