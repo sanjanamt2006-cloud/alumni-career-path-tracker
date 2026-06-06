@@ -120,8 +120,7 @@ AI-Powered Alumni Intelligence Platform
 </div>
 """, unsafe_allow_html=True)
 
-        st.markdown("### 🌟 Platform Features")
-
+    st.markdown("### 🌟 Platform Features")
     hero1, hero2, hero3 = st.columns(3)
 
     hero1.success("📈 1000+ Alumni Records")
