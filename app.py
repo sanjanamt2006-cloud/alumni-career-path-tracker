@@ -184,21 +184,21 @@ AI-Powered Alumni Intelligence Platform
     )
     st.subheader("📈 Placement Overview")
 
-fig = px.histogram(
-    df,
-    x="placement_status",
-    color="placement_status",
-    title="Placement Distribution"
-)
+    fig = px.histogram(
+        df,
+        x="placement_status",
+        color="placement_status",
+        title="Placement Distribution"
+    )
 
-st.plotly_chart(
-    fig,
-    use_container_width=True
-)
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )
 
     st.markdown("---")
 
-    left,right = st.columns(2)
+    left, right = st.columns(2)
 
     with left:
 
