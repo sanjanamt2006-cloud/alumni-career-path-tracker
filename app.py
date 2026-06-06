@@ -154,14 +154,6 @@ AI-Powered Alumni Intelligence Platform
         CareerFlow Score.
         """)
 
-    with col3:
-        st.warning("""
-        🏆 Talent Leaderboard
-
-        Rank students using
-        CareerFlow Score.
-        """)
-
     st.markdown(
         """
         ### CareerFlow AI
