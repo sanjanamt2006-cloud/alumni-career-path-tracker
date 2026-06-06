@@ -97,14 +97,14 @@ if page == "Dashboard":
         "🎓 Alumni Career Path Tracker"
     )
 
-   st.markdown(
-    """
-    ### CareerFlow AI
+    st.markdown(
+        """
+        ### CareerFlow AI
 
-    AI-Powered Alumni Intelligence, Placement Analytics,
-    Career Prediction & Employability Insights Platform
-    """
-)
+        AI-Powered Alumni Intelligence, Placement Analytics,
+        Career Prediction & Employability Insights Platform
+        """
+    )
     c1,c2,c3,c4 = st.columns(4)
 
     c1.metric(
