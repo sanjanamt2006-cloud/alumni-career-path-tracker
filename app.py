@@ -20,6 +20,14 @@ st.set_page_config(
 
 df = load_data()
 
+df["careerflow_score"] = (
+    df["cgpa"] * 10
+    + df["coding_skill_score"]
+    + df["aptitude_score"]
+    + df["communication_skill_score"]
+    + df["leadership_score"]
+) / 5
+
 # --------------------------------
 # HELPERS
 # --------------------------------
@@ -72,6 +80,9 @@ page = st.sidebar.radio(
         "Placement Analytics",
         "Salary Analytics",
         "Skill Intelligence",
+        "Career Predictor",
+        "AI Career Advisor",
+        "Leaderboard",
         "Dataset Explorer"
     ]
 )
@@ -297,4 +308,129 @@ elif page == "Dataset Explorer":
 
     st.write(
         df.columns.tolist()
+    )
+    # --------------------------------
+# LEADERBOARD
+# --------------------------------
+
+elif page == "Leaderboard":
+
+    st.header("🏆 Top Talent Leaderboard")
+
+    top_students = (
+        df.sort_values(
+            "careerflow_score",
+            ascending=False
+        )
+        .head(10)
+    )
+
+    st.dataframe(
+        top_students[
+            [
+                "student_id",
+                "branch",
+                "careerflow_score",
+                "salary_package_lpa"
+            ]
+        ]
+    )
+
+# --------------------------------
+# CAREER PREDICTOR
+# --------------------------------
+
+elif page == "Career Predictor":
+
+    st.header("🤖 Career Predictor")
+
+    cgpa = st.slider(
+        "CGPA",
+        0.0,
+        10.0,
+        7.0
+    )
+
+    coding = st.slider(
+        "Coding Skill",
+        0,
+        100,
+        50
+    )
+
+    aptitude = st.slider(
+        "Aptitude",
+        0,
+        100,
+        50
+    )
+
+    communication = st.slider(
+        "Communication",
+        0,
+        100,
+        50
+    )
+
+    score = (
+        cgpa * 10 +
+        coding +
+        aptitude +
+        communication
+    ) / 4
+
+    st.metric(
+        "Employability Score",
+        round(score, 2)
+    )
+
+    if score > 75:
+        st.success(
+            "High Placement Probability"
+        )
+
+    elif score > 60:
+        st.warning(
+            "Moderate Placement Probability"
+        )
+
+    else:
+        st.error(
+            "Low Placement Probability"
+        )
+
+# --------------------------------
+# AI CAREER ADVISOR
+# --------------------------------
+
+elif page == "AI Career Advisor":
+
+    st.header("🚀 AI Career Advisor")
+
+    cgpa = st.number_input(
+        "CGPA",
+        0.0,
+        10.0,
+        7.0
+    )
+
+    coding = st.number_input(
+        "Coding Score",
+        0,
+        100,
+        60
+    )
+
+    if cgpa < 8:
+        st.info(
+            "Improve CGPA for better placement opportunities."
+        )
+
+    if coding < 70:
+        st.info(
+            "Practice DSA and build more projects."
+        )
+
+    st.success(
+        "Recommended: Internship + Certification + Hackathons"
     )
