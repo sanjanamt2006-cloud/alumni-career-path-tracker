@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-import anthropic
+import google.generativeai as genai
 
 from utils.data_loader import load_data
 
@@ -46,16 +46,13 @@ def get_top_tier(df):
     return df["college_tier"].value_counts().idxmax()
 
 # --------------------------------
-# AI HELPER FUNCTION (Claude API)
+# AI HELPER FUNCTION (Gemini API)
 # --------------------------------
 def ask_claude(prompt):
-    client = anthropic.Anthropic(api_key=st.secrets["ANTHROPIC_API_KEY"])
-    message = client.messages.create(
-        model="claude-haiku-20250514",
-        max_tokens=1024,
-        messages=[{"role": "user", "content": prompt}]
-    )
-    return message.content[0].text
+    genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    response = model.generate_content(prompt)
+    return response.text
 
 # --------------------------------
 # SIDEBAR
@@ -306,7 +303,7 @@ elif page == "AI Career Advisor":
     st.markdown("---")
 
 # --------------------------------
-# AI CHATBOT (Claude API)
+# AI CHATBOT (Gemini API)
 # --------------------------------
 
 elif page == "AI Chatbot":
