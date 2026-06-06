@@ -563,9 +563,21 @@ elif page == "AI Career Advisor":
                 "💻 Practice DSA and build more projects."
             )
 
-        st.success(
-            "🏆 Recommended: Internship + Certification + Hackathons"
-        )
+       st.success(
+    "🏆 Recommended Path"
+)
+
+st.markdown("""
+1️⃣ Complete Industry Internship
+
+2️⃣ Earn Relevant Certifications
+
+3️⃣ Participate in Hackathons
+
+4️⃣ Build Portfolio Projects
+
+5️⃣ Apply for Product & Service Companies
+""")
     st.markdown("---")
 
 st.markdown(
