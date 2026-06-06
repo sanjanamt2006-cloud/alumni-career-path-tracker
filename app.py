@@ -73,6 +73,19 @@ def get_top_tier(df):
 st.sidebar.title(
     "🎓 Alumni Career Path Tracker"
 )
+st.sidebar.success(
+    "🚀 Welcome to CareerFlow AI"
+)
+st.sidebar.markdown("---")
+
+st.sidebar.info(
+    """
+    💡 Quote of the Day
+
+    Success is where preparation
+    meets opportunity.
+    """
+)
 
 page = st.sidebar.radio(
     "Navigation",
