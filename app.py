@@ -182,6 +182,19 @@ AI-Powered Alumni Intelligence Platform
         "Top Tier",
         get_top_tier(df)
     )
+    st.subheader("📈 Placement Overview")
+
+fig = px.histogram(
+    df,
+    x="placement_status",
+    color="placement_status",
+    title="Placement Distribution"
+)
+
+st.plotly_chart(
+    fig,
+    use_container_width=True
+)
 
     st.markdown("---")
 
