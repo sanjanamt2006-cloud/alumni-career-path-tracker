@@ -412,8 +412,11 @@ elif page == "Dataset Explorer":
 
 elif page == "Leaderboard":
 
-    st.header("🏆 Top Talent Leaderboard")
+    st.header("🥇 Top Talent Leaderboard")
 
+    st.success(
+        "Students ranked using CareerFlow AI Score"
+    )
     top_students = (
         df.sort_values(
             "careerflow_score",
