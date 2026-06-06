@@ -27,12 +27,14 @@ st.write(df["placement_status"].unique())
 
 def get_placement_rate(df):
 
-    try:
-        return round(
-            (df["placement_status"] == 1).mean()*100,
-            2
-        )
-    except:
+    return round(
+        (
+            df["placement_status"]
+            .eq("Placed")
+            .mean()
+        ) * 100,
+        2
+    )
         return 0
 
 def get_avg_salary(df):
