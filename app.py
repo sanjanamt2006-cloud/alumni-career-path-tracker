@@ -83,6 +83,7 @@ page = st.sidebar.radio(
         "Career Predictor",
         "AI Career Advisor",
         "Leaderboard",
+         "Placement Insights",
         "Dataset Explorer"
     ]
 )
