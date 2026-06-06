@@ -518,3 +518,20 @@ elif page == "AI Career Advisor":
     st.success(
         "Recommended: Internship + Certification + Hackathons"
     )
+    st.markdown("---")
+
+st.markdown(
+    """
+    <center>
+    <h4>🎓 CareerFlow AI</h4>
+    <p>
+    AI-Powered Alumni Intelligence Platform
+    </p>
+    <p>
+    Built with Streamlit • Plotly • Python
+    </p>
+    </center>
+    """,
+    unsafe_allow_html=True
+)
+    
