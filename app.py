@@ -123,12 +123,11 @@ AI-Powered Alumni Intelligence Platform
     st.markdown("### 🌟 Platform Features")
     c1, c2, c3 = st.columns(3)
 
-c1.success("📈 1000+ Alumni Records")
+hero1, hero2, hero3 = st.columns(3)
 
-c2.info("🏢 200+ Companies")
-
-c3.warning("💰 25 LPA Highest Package")
-
+hero1.success("📈 1000+ Alumni Records")
+hero2.info("🏢 200+ Companies")
+hero3.warning("💰 25 LPA Highest Package")
     with col1:
         st.info("""
         🤖 Career Predictor
