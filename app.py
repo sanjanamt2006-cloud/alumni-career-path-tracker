@@ -169,6 +169,21 @@ AI-Powered Alumni Intelligence Platform
         Rank students using
         CareerFlow Score.
         """)
+        st.markdown("""
+        ### 🎯 What This Platform Does
+
+        ✔ Tracks Placement Trends
+
+        ✔ Predicts Employability Score
+
+       ✔ Provides AI Career Guidance
+
+       ✔ Identifies Skill Gaps
+
+       ✔ Highlights Top Talent
+
+       ✔ Generates Career Insights
+       """)
 
     st.markdown(
         """
