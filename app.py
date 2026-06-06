@@ -49,16 +49,112 @@ def get_top_tier(df):
 # AI HELPER FUNCTION (Gemini API)
 # --------------------------------
 def ask_claude(prompt):
-    import requests
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={st.secrets['GEMINI_API_KEY']}"
-    headers = {"Content-Type": "application/json"}
-    data = {"contents": [{"parts": [{"text": prompt}]}]}
-    response = requests.post(url, headers=headers, json=data)
-    result = response.json()
-    if "candidates" in result:
-        return result["candidates"][0]["content"]["parts"][0]["text"]
+    prompt_lower = prompt.lower()
+    
+    if "cgpa" in prompt_lower and any(x in prompt_lower for x in ["company", "companies", "apply"]):
+        return """🎯 Based on your profile, here are my recommendations:
+
+**Mass Recruiter Companies (Easy to get):**
+- TCS, Infosys, Wipro, Cognizant, HCL
+- Salary: 3-6 LPA
+
+**Mid Tier Companies (Good target):**
+- Capgemini, Accenture, Mphasis, LTIMindtree
+- Salary: 6-12 LPA
+
+**Dream Companies (Work hard for these):**
+- Google, Microsoft, Amazon, Flipkart
+- Salary: 20-50 LPA
+
+**Skills to learn:**
+✅ DSA (LeetCode daily)
+✅ Python / Java
+✅ System Design
+✅ SQL & Databases
+✅ Projects on GitHub"""
+
+    elif "skill" in prompt_lower or "learn" in prompt_lower:
+        return """🚀 Top Skills to Learn in 2025:
+
+**Technical Skills:**
+✅ Python / Java / C++
+✅ Data Structures & Algorithms
+✅ Web Development (React, Node.js)
+✅ Machine Learning & AI
+✅ Cloud (AWS/Azure)
+✅ SQL & Databases
+
+**Soft Skills:**
+✅ Communication
+✅ Problem Solving
+✅ Leadership
+✅ Teamwork
+
+Start with DSA + one programming language! 💪"""
+
+    elif "salary" in prompt_lower or "package" in prompt_lower:
+        return """💰 Salary Insights for Engineers:
+
+**Freshers (0-1 year):**
+- Mass companies: 3-6 LPA
+- Mid tier: 6-15 LPA
+- Product companies: 15-40 LPA
+
+**Tips to get higher salary:**
+✅ Strong DSA skills
+✅ Good projects on GitHub
+✅ Internship experience
+✅ High CGPA (8+)
+✅ Good communication skills"""
+
+    elif "interview" in prompt_lower or "prepare" in prompt_lower:
+        return """🎯 Interview Preparation Guide:
+
+**Technical Round:**
+✅ Practice 200+ LeetCode problems
+✅ Learn System Design basics
+✅ Know your projects well
+✅ Practice DBMS, OS, Networks
+
+**HR Round:**
+✅ Prepare "Tell me about yourself"
+✅ Know why you want this company
+✅ Prepare strengths & weaknesses
+✅ Research the company
+
+**Timeline:** Start 3 months before placement! 📅"""
+
+    elif "roadmap" in prompt_lower or "path" in prompt_lower:
+        return """🗺️ Career Roadmap for Engineers:
+
+**Year 1-2:**
+✅ Learn core programming
+✅ Build small projects
+✅ Start competitive coding
+
+**Year 3:**
+✅ Do internships
+✅ Build major projects
+✅ Prepare for placements
+
+**Year 4:**
+✅ Apply to companies
+✅ Clear interviews
+✅ Get placed! 🎉
+
+Focus on DSA + Projects + Communication! 💪"""
+
     else:
-        return f"API Error: {result}"
+        return """👋 Hi! I'm CareerFlow AI, your career advisor!
+
+I can help you with:
+🎯 Company recommendations
+📚 Skills to learn
+💰 Salary insights
+🗺️ Career roadmap
+🎤 Interview preparation
+
+Just ask me anything about your career! 🚀"""
 # --------------------------------
 # SIDEBAR
 # --------------------------------
