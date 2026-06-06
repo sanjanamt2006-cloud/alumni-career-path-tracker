@@ -314,47 +314,31 @@ elif page == "Skill Intelligence":
     )
 
     skills = {
-        "Coding":
-        df["coding_skill_score"].mean(),
-
-        "Communication":
-        df["communication_skill_score"].mean(),
-
-        "Aptitude":
-        df["aptitude_score"].mean(),
-
-        "Leadership":
-        df["leadership_score"].mean(),
-
-        "Logical Reasoning":
-        df["logical_reasoning_score"].mean()
+        "Coding": df["coding_skill_score"].mean(),
+        "Communication": df["communication_skill_score"].mean(),
+        "Aptitude": df["aptitude_score"].mean(),
+        "Leadership": df["leadership_score"].mean(),
+        "Logical Reasoning": df["logical_reasoning_score"].mean()
     }
-
-    skill_df = pd.DataFrame(
-        {
-            "Skill": skills.keys(),
-            "Score": skills.values()
-        }
-    )
 
     fig = go.Figure()
 
-fig.add_trace(
-    go.Scatterpolar(
-        r=list(skills.values()),
-        theta=list(skills.keys()),
-        fill="toself"
+    fig.add_trace(
+        go.Scatterpolar(
+            r=list(skills.values()),
+            theta=list(skills.keys()),
+            fill="toself"
+        )
     )
-)
 
-fig.update_layout(
-    title="🚀 Skill Radar Analysis"
-)
+    fig.update_layout(
+        title="🚀 Skill Radar Analysis"
+    )
 
-st.plotly_chart(
-    fig,
-    use_container_width=True
-)
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )
 
 # --------------------------------
 # DATASET EXPLORER
