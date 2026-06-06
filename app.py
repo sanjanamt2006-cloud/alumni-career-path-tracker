@@ -514,19 +514,26 @@ elif page == "Career Predictor":
         "Employability Score",
         round(score, 2)
     )
+
     if score > 75:
-    st.balloons()
-    st.success("🎉 High Placement Probability")
+        st.balloons()
+        st.success(
+            "🎉 High Placement Probability"
+        )
 
-elif score > 60:
-    st.warning("Moderate Placement Probability")
+    elif score > 60:
+        st.warning(
+            "Moderate Placement Probability"
+        )
 
-else:
-    st.error("Low Placement Probability")
-   
+    else:
+        st.error(
+            "Low Placement Probability"
+        )
 # --------------------------------
 # AI CAREER ADVISOR
 # --------------------------------
+
 elif page == "AI Career Advisor":
 
     st.header("🚀 AI Career Advisor")
@@ -557,11 +564,11 @@ elif page == "AI Career Advisor":
                 "💻 Practice DSA and build more projects."
             )
 
-       st.success(
-    "🏆 Recommended Path"
-)
+        st.success(
+            "🏆 Recommended Path"
+        )
 
-st.markdown("""
+        st.markdown("""
 1️⃣ Complete Industry Internship
 
 2️⃣ Earn Relevant Certifications
@@ -572,20 +579,5 @@ st.markdown("""
 
 5️⃣ Apply for Product & Service Companies
 """)
-    st.markdown("---")
 
-st.markdown(
-    """
-    <center>
-    <h4>🎓 CareerFlow AI</h4>
-    <p>
-    AI-Powered Alumni Intelligence Platform
-    </p>
-    <p>
-    Built with Streamlit • Plotly • Python
-    </p>
-    </center>
-    """,
-    unsafe_allow_html=True
-)
-    
+    st.markdown("---")
