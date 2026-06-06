@@ -49,10 +49,13 @@ def get_top_tier(df):
 # AI HELPER FUNCTION (Gemini API)
 # --------------------------------
 def ask_claude(prompt):
-    genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-    model = genai.GenerativeModel("models/gemini-1.0-pro")
-    response = model.generate_content(prompt)
-    return response.text
+    import requests
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={st.secrets['GEMINI_API_KEY']}"
+    headers = {"Content-Type": "application/json"}
+    data = {"contents": [{"parts": [{"text": prompt}]}]}
+    response = requests.post(url, headers=headers, json=data)
+    result = response.json()
+    return result["candidates"][0]["content"]["parts"][0]["text"]
 
 # --------------------------------
 # SIDEBAR
