@@ -283,7 +283,36 @@ elif page == "Skill Intelligence":
 # --------------------------------
 # DATASET EXPLORER
 # --------------------------------
+# --------------------------------
+# PLACEMENT INSIGHTS
+# --------------------------------
 
+elif page == "Placement Insights":
+
+    st.header("📈 Placement Insights")
+
+    placed_df = df[
+        df["placement_status"] == "Placed"
+    ]
+
+    branch_salary = (
+        placed_df.groupby("branch")
+        ["salary_package_lpa"]
+        .mean()
+        .reset_index()
+    )
+
+    fig = px.bar(
+        branch_salary,
+        x="branch",
+        y="salary_package_lpa",
+        title="Average Salary by Branch"
+    )
+
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )
 elif page == "Dataset Explorer":
 
     st.header(
