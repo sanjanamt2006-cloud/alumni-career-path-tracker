@@ -49,9 +49,9 @@ def get_top_tier(df):
 # AI HELPER FUNCTION (Claude API)
 # --------------------------------
 def ask_claude(prompt):
-    client = anthropic.Anthropic()
+    client = anthropic.Anthropic(api_key=st.secrets["ANTHROPIC_API_KEY"])
     message = client.messages.create(
-        model="claude-opus-4-20250514",
+        model="claude-haiku-20250514",
         max_tokens=1024,
         messages=[{"role": "user", "content": prompt}]
     )
@@ -127,6 +127,7 @@ text-align:center;
     with col1:
         st.info("""
         🤖 Career Predictor
+
         Predict employability using
         CGPA and skill metrics.
         """)
@@ -134,6 +135,7 @@ text-align:center;
     with col2:
         st.success("""
         🚀 AI Career Advisor
+
         Personalized recommendations
         for career growth.
         """)
@@ -141,25 +143,36 @@ text-align:center;
     with col3:
         st.warning("""
         🏆 Talent Leaderboard
+
         Rank students using
         CareerFlow Score.
         """)
 
     st.markdown("""
     ### 🎯 What This Platform Does
+
     ✔ Tracks Placement Trends
+
     ✔ Predicts Employability Score
+
     ✔ Provides AI Career Guidance
+
     ✔ Identifies Skill Gaps
+
     ✔ Highlights Top Talent
+
     ✔ Generates Career Insights
+
     ✔ Recommends Companies
+
     ✔ Generates Career Roadmaps
+
     ✔ AI Chatbot for Career Queries
     """)
 
     st.markdown("""
     ### CareerFlow AI
+
     AI-Powered Alumni Intelligence, Placement Analytics,
     Career Prediction & Employability Insights Platform
     """)
@@ -280,16 +293,20 @@ elif page == "AI Career Advisor":
         st.success("🏆 Recommended Path")
         st.markdown("""
 1️⃣ Complete Industry Internship
+
 2️⃣ Earn Relevant Certifications
+
 3️⃣ Participate in Hackathons
+
 4️⃣ Build Portfolio Projects
+
 5️⃣ Apply for Product & Service Companies
 """)
 
     st.markdown("---")
 
 # --------------------------------
-# ✨ NEW: AI CHATBOT (Claude API)
+# AI CHATBOT (Claude API)
 # --------------------------------
 
 elif page == "AI Chatbot":
@@ -315,17 +332,22 @@ elif page == "AI Chatbot":
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
                 system_context = f"""You are CareerFlow AI, an expert alumni career advisor.
-                You help students with career guidance, placement preparation, skill building, and job market insights.
-                Dataset context: {df.shape[0]} alumni records, avg salary {get_avg_salary(df)} LPA, placement rate {get_placement_rate(df)}%.
-                Be concise, practical, and encouraging. Use emojis to make responses friendly."""
+You help students with career guidance, placement preparation, skill building, and job market insights.
+Dataset context: {df.shape[0]} alumni records, avg salary {get_avg_salary(df)} LPA, placement rate {get_placement_rate(df)}%.
+Be concise, practical, and encouraging. Use emojis to make responses friendly."""
 
                 full_prompt = f"{system_context}\n\nStudent question: {user_input}"
-                response = ask_claude(full_prompt)
+
+                try:
+                    response = ask_claude(full_prompt)
+                except Exception as e:
+                    response = f"⚠️ Error: {str(e)}"
+
                 st.markdown(response)
                 st.session_state.chat_history.append({"role": "assistant", "content": response})
 
 # --------------------------------
-# ✨ NEW: COMPANY RECOMMENDER
+# COMPANY RECOMMENDER
 # --------------------------------
 
 elif page == "Company Recommender":
@@ -350,7 +372,6 @@ elif page == "Company Recommender":
 
     if st.button("🔍 Find My Best Companies"):
         with st.spinner("AI is analyzing your profile..."):
-
             prompt = f"""You are a career placement expert. Based on this student profile, recommend exactly 6 companies.
 
 Student Profile:
@@ -366,10 +387,12 @@ Give recommendations in this exact format for each company:
 
 Be specific, realistic, and helpful. Include a mix of easy, moderate, and dream companies."""
 
-            response = ask_claude(prompt)
-
-        st.success("🎯 Your Personalized Company Recommendations")
-        st.markdown(response)
+            try:
+                response = ask_claude(prompt)
+                st.success("🎯 Your Personalized Company Recommendations")
+                st.markdown(response)
+            except Exception as e:
+                st.error(f"⚠️ Error: {str(e)}")
 
         st.markdown("---")
         st.markdown("### 📊 Companies from Our Alumni Data")
@@ -385,7 +408,7 @@ Be specific, realistic, and helpful. Include a mix of easy, moderate, and dream 
             st.plotly_chart(fig, use_container_width=True)
 
 # --------------------------------
-# ✨ NEW: CAREER ROADMAP GENERATOR
+# CAREER ROADMAP
 # --------------------------------
 
 elif page == "Career Roadmap":
@@ -417,7 +440,6 @@ elif page == "Career Roadmap":
 
     if st.button("🚀 Generate My Roadmap"):
         with st.spinner("AI is crafting your personalized roadmap..."):
-
             prompt = f"""You are an expert career coach for engineering students in India.
 Create a detailed, actionable career roadmap for this student.
 
@@ -439,10 +461,12 @@ Create a roadmap with these sections:
 
 Be specific, realistic for Indian engineering students, and motivating. Use emojis."""
 
-            response = ask_claude(prompt)
-
-        st.success("✅ Your Personalized Career Roadmap is Ready!")
-        st.markdown(response)
+            try:
+                response = ask_claude(prompt)
+                st.success("✅ Your Personalized Career Roadmap is Ready!")
+                st.markdown(response)
+            except Exception as e:
+                st.error(f"⚠️ Error: {str(e)}")
 
         st.markdown("---")
         st.markdown("### 📊 Alumni Who Achieved Similar Goals")
