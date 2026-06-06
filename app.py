@@ -118,6 +118,33 @@ AI-Powered Alumni Intelligence Platform
 
 </div>
 """, unsafe_allow_html=True)
+    st.markdown("### 🌟 Platform Features")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.info("""
+    🤖 Career Predictor
+
+    Predict employability using
+    CGPA and skill metrics.
+    """)
+
+with col2:
+    st.success("""
+    🚀 AI Career Advisor
+
+    Personalized recommendations
+    for career growth.
+    """)
+
+with col3:
+    st.warning("""
+    🏆 Talent Leaderboard
+
+    Rank students using
+    CareerFlow Score.
+    """)
 
     st.markdown(
         """
