@@ -437,9 +437,9 @@ elif page == "Leaderboard":
     )
     st.balloons()
 
-st.info(
-    "Top 10 students based on CareerFlow AI Score"
-)
+    st.info(
+        "Top 10 students based on CareerFlow AI Score"
+    )
 # --------------------------------
 # CAREER PREDICTOR
 # --------------------------------
