@@ -120,14 +120,16 @@ AI-Powered Alumni Intelligence Platform
 </div>
 """, unsafe_allow_html=True)
 
-    st.markdown("### 🌟 Platform Features")
-    c1, c2, c3 = st.columns(3)
+        st.markdown("### 🌟 Platform Features")
 
-hero1, hero2, hero3 = st.columns(3)
+    hero1, hero2, hero3 = st.columns(3)
 
-hero1.success("📈 1000+ Alumni Records")
-hero2.info("🏢 200+ Companies")
-hero3.warning("💰 25 LPA Highest Package")
+    hero1.success("📈 1000+ Alumni Records")
+    hero2.info("🏢 200+ Companies")
+    hero3.warning("💰 25 LPA Highest Package")
+
+    col1, col2, col3 = st.columns(3)
+
     with col1:
         st.info("""
         🤖 Career Predictor
@@ -142,6 +144,14 @@ hero3.warning("💰 25 LPA Highest Package")
 
         Personalized recommendations
         for career growth.
+        """)
+
+    with col3:
+        st.warning("""
+        🏆 Talent Leaderboard
+
+        Rank students using
+        CareerFlow Score.
         """)
 
     with col3:
