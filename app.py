@@ -513,9 +513,12 @@ elif page == "Career Predictor":
     )
 
     if score > 75:
-        st.success(
-            "High Placement Probability"
-        )
+
+    st.balloons()
+
+    st.success(
+        "🎉 High Placement Probability"
+    )
 
     elif score > 60:
         st.warning(
