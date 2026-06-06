@@ -336,17 +336,24 @@ elif page == "Skill Intelligence":
         }
     )
 
-    fig = px.bar(
-        skill_df,
-        x="Skill",
-        y="Score",
-        title="Average Skill Scores"
-    )
+    fig = go.Figure()
 
-    st.plotly_chart(
-        fig,
-        use_container_width=True
+fig.add_trace(
+    go.Scatterpolar(
+        r=list(skills.values()),
+        theta=list(skills.keys()),
+        fill="toself"
     )
+)
+
+fig.update_layout(
+    title="🚀 Skill Radar Analysis"
+)
+
+st.plotly_chart(
+    fig,
+    use_container_width=True
+)
 
 # --------------------------------
 # DATASET EXPLORER
