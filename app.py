@@ -33,7 +33,6 @@ def get_placement_rate(df):
         ) * 100,
         2
     )
-        return 0
 
 def get_avg_salary(df):
 
